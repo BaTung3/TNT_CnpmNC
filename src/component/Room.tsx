@@ -1,7 +1,7 @@
 // import logo from "././logo.svg";
 // import "././App.css";
 // import { Button } from "bootstrap";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootstrap from "react-bootstrap";
@@ -11,7 +11,7 @@ import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import TimePicker from "react-time-picker";
+import Collapse from "react-bootstrap/Collapse";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import {
   withScriptjs,
@@ -33,19 +33,11 @@ const stylepad = {
   "margin-left": "5px",
   padding: "0px",
 };
-// const MyMapComponent = withScriptjs(
-//   withGoogleMap((props) => (
-//     <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
-//       {props.isMarkerShown && (
-//         <Marker position={{ lat: -34.397, lng: 150.644 }} />
-//       )}
-//     </GoogleMap>
-//   ))
-// );
 
 // const [value, setValue] = useState();
 
-function View2() {
+function Room() {
+  const [open, setOpen] = useState(false);
   return (
     <React.Fragment>
       <header>
@@ -69,7 +61,8 @@ function View2() {
             </Col>
             <Col>
               <div
-                style={{ display: "flex", justifyContent: "flex-end" }}
+                style={{ justifyContent: "flex-end" }}
+                // align="right";
                 className="c-column css-bv1y1v marginLeftAvatarTitle"
                 // style={{ "padding-right": "15px" }}
               >
@@ -112,7 +105,7 @@ function View2() {
                   </a>
                 </Button>
                 <Button variant="light">
-                  <a>Rooms</a>
+                  <a className="list-group-item">Rooms</a>
                 </Button>
                 <Button variant="light">
                   <a className="list-group-item">Rooms Facility</a>
@@ -142,329 +135,264 @@ function View2() {
           <Col xs={9}>
             <Row>
               <h1>
-                <b>Property Detail</b>
+                <b>Rooms</b>
               </h1>
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Details</th>
-                  <tr>
-                    <td>Main Currency</td>
-                    <td>Vietnam Dong (VND)</td>
-                  </tr>
+            </Row>
+            <Row>
+              <Table className="m-5">
+                <thead>
+                  <b>Room Types</b>
+                </thead>
+                <Row>
+                  <Table>
+                    <Row>
+                      <span>
+                        <td>
+                          <b>Room 1</b>
+                        </td>
+                        <td>
+                          <a
+                            style={{
+                              color: "blue",
+                              justifyContent: "flex-end",
+                            }}
+                          >
+                            Duplicate
+                          </a>
+                        </td>
+                      </span>
+                    </Row>
 
-                  <tr>
-                    <td>Reception Area</td>
-                    <td>
-                      {["radio"].map((type) => (
-                        <div key={`inline-${type}`} className="mb-3">
-                          <Form.Check
-                            label="Available 24 Hours"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-1`}
-                          />
-                          <Form.Check
-                            default
-                            label="Not Available 24 Hours"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-2`}
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Check-In Time</td>
-                    <td>
-                      From*
-                      <TimePicker start="14:00" end="21:00" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Check out Time</td>
-                    <td>
-                      From*
-                      <TimePicker start="12:00" end="21:00" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Distance to City Center*</td>
-                    <td>
-                      <Form.Control type="text" placeholder="5" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Number of Floors</td>
-                    <td>
-                      <Form.Control type="text" placeholder="" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Additional Breakfast Charge (Exclude Room Rate)</td>
-                    <td>
-                      <Form.Control type="text" placeholder="5" />
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
+                    <Row>
+                      <Form>
+                        <Table borderless responsive>
+                          <tr>
+                            <td>Room Name*</td>
+                            <td>
+                              <ReactBootstrap.FormGroup
+                                className="mb-3"
+                                controlId="formName"
+                              >
+                                <Form.Control
+                                  type="text"
+                                  placeholder="Property Name"
+                                />
+                              </ReactBootstrap.FormGroup>
+                            </td>
+                          </tr>
 
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Cancellation Policy</th>
-                  <tr>
-                    <td>Cancellation Policy*</td>
-                    <td>
-                      <Dropdown>
-                        <Dropdown.Toggle id="dropdown-basic">
-                          cancel 1D prior arrival , 1N charge , no show 1N
-                          charge
-                        </Dropdown.Toggle>
+                          <tr>
+                            <td>Room Specification</td>
+                            <td>
+                              <tr>Room Type*</tr>
+                              <tr>
+                                <Dropdown>
+                                  <Dropdown.Toggle
+                                    variant="light"
+                                    id="dropdown-basic"
+                                  >
+                                    Single
+                                  </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">
-                            cancel 1D prior arrival , 2N charge , no show 2N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">
-                            cancel 1D prior arrival , 3N charge , no show 3N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            cancel 1D prior arrival , 4N charge , no show 4N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            cancel 1D prior arrival , 5N charge , no show 5N
-                            charge
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                      <tr>
-                        <Card style={{ width: "18rem" }}>
-                          <Card.Body>
-                            <Card.Text>
-                              Cancel 1D prior arrival 1N charge. No Show 1N
-                              charge.
-                            </Card.Text>
-                          </Card.Body>
-                        </Card>
-                      </tr>
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
+                                  <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">
+                                      Single
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">
+                                      Double
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      Twins
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      Triple
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      standard
+                                    </Dropdown.Item>
+                                  </Dropdown.Menu>
+                                </Dropdown>
+                              </tr>
 
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Style</th>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Adventure"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Backpacker"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Budget"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Conference"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Hip"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Honeymoon"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Luxury"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Shopping"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Spa"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Airport"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Boutique"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Business"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Family"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Golf"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Historic"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Long Stay"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Resort"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
+                              <tr>Bed Type*</tr>
+                              <tr>
+                                <Dropdown>
+                                  <Dropdown.Toggle
+                                    variant="light"
+                                    id="dropdown-basic"
+                                    className="btn-block"
+                                  >
+                                    Single
+                                  </Dropdown.Toggle>
+
+                                  <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">
+                                      Single
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">
+                                      Double
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      Twins
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      Queen
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      King
+                                    </Dropdown.Item>
+                                  </Dropdown.Menu>
+                                </Dropdown>
+                              </tr>
+
+                              <tr>Maximum Occupancy*</tr>
+                              <tr>
+                                <td>
+                                  <Form.Control type="text" placeholder="" />
+                                </td>
+                                <td>
+                                  <Form.Control placeholder="person" disabled />
+                                </td>
+                              </tr>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Extra Bed Information</td>
+                            <td>
+                              <tr>Maximum Extra Beds</tr>
+                              <tr>
+                                <td>
+                                  <Form.Control type="text" placeholder="" />
+                                </td>
+                                <td>
+                                  <Form.Control placeholder="piece" disabled />
+                                </td>
+                              </tr>
+
+                              <tr>Price of Extra Bed</tr>
+                              <tr>
+                                <td>
+                                  <Form.Control placeholder="AUD" disabled />
+                                </td>
+                                <td>
+                                  <Form.Control type="text" placeholder="" />
+                                </td>
+                              </tr>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>Room Size</td>
+                            <td>
+                              <tr>Width</tr>
+                              <tr>
+                                <td>
+                                  <Form.Control type="text" placeholder="" />
+                                </td>
+                                <td>
+                                  <Form.Control placeholder="meter" disabled />
+                                </td>
+                              </tr>
+                            </td>
+
+                            <td>
+                              <tr>Length</tr>
+                              <tr>
+                                <td>
+                                  <Form.Control type="text" placeholder="" />
+                                </td>
+                                <td>
+                                  <Form.Control placeholder="meter" disabled />
+                                </td>
+                              </tr>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>Room Rate</td>
+
+                            <td>
+                              <tr>
+                                <td>
+                                  <Form.Control placeholder="AUD" disabled />
+                                </td>
+                                <td>
+                                  <Form.Control type="text" placeholder="" />
+                                </td>
+                              </tr>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>Breakfast Included*</td>
+
+                            {["radio"].map((type) => (
+                              <div key={`inline-${type}`} className="mb-3">
+                                <Form.Check
+                                  inline
+                                  label="YES"
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-1`}
+                                />
+                                <Form.Check
+                                  inline
+                                  default
+                                  label="NO"
+                                  name="group1"
+                                  type={type}
+                                  id={`inline-${type}-2`}
+                                />
+                              </div>
+                            ))}
+                          </tr>
+
+                          <tr>
+                            <td>Number of Rooms for This Type*</td>
+
+                            <td>
+                              <tr>
+                                <td>
+                                  <Form.Control type="text" placeholder="" />
+                                </td>
+                                <td>
+                                  <Form.Control placeholder="rooms" disabled />
+                                </td>
+                              </tr>
+                            </td>
+                          </tr>
+                        </Table>
+                      </Form>
+                    </Row>
+
+                    <Row>
+                      <Table>
+                        <tr>
+                          <svg
+                            className="c-icon css-36kz25"
+                            viewBox="0 0 24 24"
+                            preserveAspectRatio="xMidYMid meet"
+                            style={{ height: "50px", width: "50px" }}
+                          >
+                            <g id="location-city">
+                              <path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"></path>
+                            </g>
+                          </svg>
+                        </tr>
+                        <tr>
+                          <span>Add New Room Type</span>
+                        </tr>
+                        <tr>
+                          <span>
+                            There are 5 more rooms unlisted. Click here to add
+                            another room type
+                          </span>
+                        </tr>
+                      </Table>
+                    </Row>
+                  </Table>
+                </Row>
+              </Table>
             </Row>
           </Col>
         </Row>
@@ -482,12 +410,10 @@ function View2() {
         </Row>
         <Row>
           <Col>
-            <div style={{ display: "flex", justifyContent: "flex-start" }}>
-              Need Help?
-            </div>
+            <div style={{ justifyContent: "flex-start" }}>Need Help?</div>
           </Col>
           <Col>
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <div style={{ justifyContent: "flex-end" }}>
               or Save and countinu later
             </div>
           </Col>
@@ -497,4 +423,4 @@ function View2() {
   );
 }
 
-export default View2;
+export default Room;

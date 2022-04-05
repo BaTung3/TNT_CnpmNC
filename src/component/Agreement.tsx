@@ -1,7 +1,7 @@
 // import logo from "././logo.svg";
 // import "././App.css";
 // import { Button } from "bootstrap";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootstrap from "react-bootstrap";
@@ -11,8 +11,9 @@ import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import TimePicker from "react-time-picker";
+import Collapse from "react-bootstrap/Collapse";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { Checkbox } from "@mui/material";
 import {
   withScriptjs,
   withGoogleMap,
@@ -21,7 +22,6 @@ import {
 } from "react-google-maps";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-
 // import "react-phone-number-input/style.css";
 // import React, { useState } from "react";
 // import PhoneInput from "react-phone-number-input/react-native-input";
@@ -33,19 +33,11 @@ const stylepad = {
   "margin-left": "5px",
   padding: "0px",
 };
-// const MyMapComponent = withScriptjs(
-//   withGoogleMap((props) => (
-//     <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
-//       {props.isMarkerShown && (
-//         <Marker position={{ lat: -34.397, lng: 150.644 }} />
-//       )}
-//     </GoogleMap>
-//   ))
-// );
 
 // const [value, setValue] = useState();
 
-function View2() {
+function Agreement() {
+  const [open, setOpen] = useState(false);
   return (
     <React.Fragment>
       <header>
@@ -69,7 +61,8 @@ function View2() {
             </Col>
             <Col>
               <div
-                style={{ display: "flex", justifyContent: "flex-end" }}
+                style={{ justifyContent: "flex-end" }}
+                // align="right"
                 className="c-column css-bv1y1v marginLeftAvatarTitle"
                 // style={{ "padding-right": "15px" }}
               >
@@ -112,7 +105,7 @@ function View2() {
                   </a>
                 </Button>
                 <Button variant="light">
-                  <a>Rooms</a>
+                  <a className="list-group-item">Rooms</a>
                 </Button>
                 <Button variant="light">
                   <a className="list-group-item">Rooms Facility</a>
@@ -140,356 +133,192 @@ function View2() {
           </Col>
 
           <Col xs={9}>
-            <Row>
-              <h1>
-                <b>Property Detail</b>
-              </h1>
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Details</th>
-                  <tr>
-                    <td>Main Currency</td>
-                    <td>Vietnam Dong (VND)</td>
-                  </tr>
+            <Col>
+              <Row>
+                <tr>
+                  <h1>
+                    <b>Contract Signatory Information</b>
+                  </h1>
+                </tr>
+                <tr>
+                  <span>
+                    The person below acknowledge that s/he is legally authorized
+                    to sign the Contract Agreement. All fields are mandatory.
+                  </span>
+                </tr>
+                <Form>
+                  <Table
+                    responsive
+                    className="c-flexbox c-collapse-header c-collapse-header--is-closed grayBackground css-rapf31"
+                  >
+                    <tr>
+                      <td>
+                        <div
+                          className="c-block flex_1"
+                          style={{ marginRight: 16 }}
+                        >
+                          <label
+                            className="c-label c-label--theme-tera css-cn0vwd"
+                            style={{ marginBottom: 0 }}
+                          >
+                            <span>Full Name</span>
+                          </label>
+                          <span className="c-text css-1hvjmdo">
+                            <span>as stated in a valid ID Card</span>
+                          </span>
+                        </div>
+                      </td>
+                      <td style={{ alignItems: "flex-end" }}>
+                        <ReactBootstrap.FormGroup
+                          className="mb-3"
+                          controlId="formName"
+                        >
+                          <Form.Control
+                            type="text"
+                            placeholder="Please type your full name here..."
+                          />
+                        </ReactBootstrap.FormGroup>
+                      </td>
+                    </tr>
 
-                  <tr>
-                    <td>Reception Area</td>
-                    <td>
-                      {["radio"].map((type) => (
-                        <div key={`inline-${type}`} className="mb-3">
-                          <Form.Check
-                            label="Available 24 Hours"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-1`}
-                          />
-                          <Form.Check
-                            default
-                            label="Not Available 24 Hours"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-2`}
-                          />
+                    <tr>
+                      <td>
+                        <div
+                          className="c-block flex_1"
+                          style={{ marginRight: 16 }}
+                        >
+                          <label
+                            className="c-label c-label--theme-tera css-cn0vwd"
+                            style={{ marginBottom: 0 }}
+                          >
+                            <span>Role</span>
+                          </label>
+                          <span className="c-text css-1hvjmdo">
+                            <span>To be stated in signed contract</span>
+                          </span>
                         </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Check-In Time</td>
-                    <td>
-                      From*
-                      <TimePicker start="14:00" end="21:00" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Check out Time</td>
-                    <td>
-                      From*
-                      <TimePicker start="12:00" end="21:00" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Distance to City Center*</td>
-                    <td>
-                      <Form.Control type="text" placeholder="5" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Number of Floors</td>
-                    <td>
-                      <Form.Control type="text" placeholder="" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Additional Breakfast Charge (Exclude Room Rate)</td>
-                    <td>
-                      <Form.Control type="text" placeholder="5" />
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
+                      </td>
+                      <td style={{ alignItems: "flex-end" }}>
+                        <ReactBootstrap.FormGroup
+                          className="mb-3"
+                          controlId="formName"
+                        >
+                          <Form.Control type="text" placeholder="Select" />
+                        </ReactBootstrap.FormGroup>
+                      </td>
+                    </tr>
 
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Cancellation Policy</th>
-                  <tr>
-                    <td>Cancellation Policy*</td>
-                    <td>
-                      <Dropdown>
-                        <Dropdown.Toggle id="dropdown-basic">
-                          cancel 1D prior arrival , 1N charge , no show 1N
-                          charge
-                        </Dropdown.Toggle>
+                    <tr>
+                      <td>
+                        <div
+                          className="c-block flex_1"
+                          style={{ marginRight: 16 }}
+                        >
+                          <label
+                            className="c-label c-label--theme-tera css-cn0vwd"
+                            style={{ marginBottom: 0 }}
+                          >
+                            <span>Email Address</span>
+                          </label>
+                          <span className="c-text css-1hvjmdo">
+                            <span>For OTP verification purpose</span>
+                          </span>
+                        </div>
+                      </td>
+                      <td style={{ alignItems: "flex-end" }}>
+                        <ReactBootstrap.FormGroup
+                          className="mb-3"
+                          controlId="formName"
+                        >
+                          <Form.Control
+                            type="text"
+                            placeholder="Please type a valid email address here..."
+                          />
+                        </ReactBootstrap.FormGroup>
+                      </td>
+                    </tr>
 
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">
-                            cancel 1D prior arrival , 2N charge , no show 2N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">
-                            cancel 1D prior arrival , 3N charge , no show 3N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            cancel 1D prior arrival , 4N charge , no show 4N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            cancel 1D prior arrival , 5N charge , no show 5N
-                            charge
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                      <tr>
-                        <Card style={{ width: "18rem" }}>
-                          <Card.Body>
-                            <Card.Text>
-                              Cancel 1D prior arrival 1N charge. No Show 1N
-                              charge.
-                            </Card.Text>
-                          </Card.Body>
-                        </Card>
-                      </tr>
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
+                    <tr>
+                      <td>
+                        <div
+                          className="c-block flex_1"
+                          style={{ marginRight: 16 }}
+                        >
+                          <label
+                            className="c-label c-label--theme-tera css-cn0vwd"
+                            style={{ marginBottom: 0 }}
+                          >
+                            <span>Mobile Phone Number</span>
+                          </label>
+                          <span className="c-text css-1hvjmdo">
+                            <span>For OTP verification purpose</span>
+                          </span>
+                        </div>
+                      </td>
+                      <td style={{ alignItems: "flex-end" }}>
+                        <td>
+                          <div className="c-block css-2ftmoj">
+                            <img
+                              width={25.99}
+                              height={20}
+                              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20id%3D%22flag-icon-css-au%22%20width%3D%22640%22%20height%3D%22480%22%3E%3Cg%20stroke-width%3D%221pt%22%3E%3Cpath%20fill%3D%22%23006%22%20d%3D%22M0%200h640v480H0z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M0%200v28l307%20222h38.7v-28L38.7%200H0zm345.7%200v28l-307%20222H0v-28L307%200h38.7z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M144%200v250h57.6V0H144zM0%2083.3v83.4h345.7V83.3H0z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23c00%22%20d%3D%22M0%20100v50h345.7v-50H0zM155.6%200v250H190V0h-34.5zM0%20250l115.2-83.3H141L25.8%20250H0zM0%200l115.2%2083.3H89.5L0%2018.6V0zm204.7%2083.3L319.9%200h25.8L230.5%2083.3h-25.8zm141%20166.7l-115.2-83.3h25.7l89.5%2064.7V250z%22%3E%3C%2Fpath%3E%3Cpath%20fill%3D%22%23fff%22%20fill-rule%3D%22evenodd%22%20d%3D%22M299.8%20392.5l-43.7%203.8%206%2043.4L232%20408l-30.1%2031.7%206-43.4-43.7-3.8%2037.7-22.3-24.3-36.5%2041%2015.5%2013.4-41.7%2013.5%2041.7%2041-15.5-24.3%2036.5m224.4%2062.3L476%20416.7l17.8%206.7%205.8-18.1%205.8%2018.1%2017.8-6.7-10.5%2015.8%2016.4%209.7-19%201.7%202.6%2018.9-13-13.9-13.2%2013.9%202.6-18.9-19-1.6m16.4-291.9L476%20134.6l17.8%206.7%205.8-18.1%205.8%2018.1%2017.8-6.7-10.5%2015.8%2016.4%209.8-19%201.6%202.6%2018.9-13-13.8-13.2%2013.7%202.6-18.8-19-1.6M380.8%20265l-10.5-15.8%2017.8%206.7%205.8-18.1%205.9%2018.1%2017.8-6.7-10.6%2015.8%2016.4%209.7-19%201.7%202.7%2018.9-13.2-13.9-13%2013.9%202.5-18.9-19-1.6m216.3-38L570%20221l17.8%206.7%205.8-18.1%205.9%2018.1%2017.8-6.7-10.5%2015.8%2016.3%209.7-19%201.7%202.6%2018.8-13-13.8-13.2%2013.8%202.6-18.8-19-1.7M542%20320l-10.3%206.5%202.9-11.9-9.3-7.8%2012.1-1%204.6-11.2%204.7%2011.3%2012.1.9-9.3%207.8%202.9%2011.9%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+                              alt="Australia"
+                            ></img>
+                          </div>
+                        </td>
+                        <td>
+                          <PhoneInput country={"vn"} />
+                        </td>
+                      </td>
+                    </tr>
 
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Style</th>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Adventure"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Backpacker"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Budget"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Conference"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Hip"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Honeymoon"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Luxury"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Shopping"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Spa"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Airport"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Boutique"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Business"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Family"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Golf"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Historic"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Long Stay"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Resort"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
+                    <tr>
+                      <div className="c-checkbox c-checkbox--theme-tera css-1x1rsp6">
+                        <td>
+                          <Checkbox defaultChecked />
+                        </td>
+                        <td>
+                          <span>
+                            I hereby acknowledge that I am the authorized
+                            signatory for the contract (Business Owner, CEO,
+                            President, or equivalent)
+                          </span>
+                        </td>
+                      </div>
+                    </tr>
+                  </Table>
+                </Form>
+              </Row>
+            </Col>
+
+            <Row align="right" display="inline">
+              <Col>
+                <Button variant="outline-dark" size="lg">
+                  Save and go to previous section
+                </Button>
+              </Col>
+              <Col>
+                <Button
+                  variant="outline-dark"
+                  size="lg"
+                  style={{ marginLeft: 16, backgroundColor: "orange" }}
+                >
+                  <span>
+                    <span>Review Contract </span>
+                  </span>
+                </Button>
+              </Col>
             </Row>
-          </Col>
-        </Row>
-        <Row align="right" display="inline">
-          <Col>
-            <Button variant="outline-dark" size="lg">
-              Save and go to previous section
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="outline-dark" size="lg">
-              Save and countnu to next section
-            </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div style={{ display: "flex", justifyContent: "flex-start" }}>
-              Need Help?
-            </div>
-          </Col>
-          <Col>
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              or Save and countinu later
-            </div>
+            <Row>
+              <Col>
+                <div style={{ alignItems: "flex-end" }}>Need Help?</div>
+              </Col>
+              <Col>
+                <div style={{ alignItems: "flex-end" }}>
+                  or Save and countinu later
+                </div>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
@@ -497,4 +326,4 @@ function View2() {
   );
 }
 
-export default View2;
+export default Agreement;

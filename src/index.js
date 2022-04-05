@@ -3,9 +3,17 @@ import ReactDOM from "react-dom";
 import "./index.css";
 // import App from "./App";
 import View1 from "./component/View1.tsx";
-import View2 from "./component/View2.tsx";
+// import View2 from "./component/View2.tsx";
 import View3 from "./component/View3.tsx";
-import Head from "./Head.tsx";
+import Room from "./component/Room.tsx";
+import RoomFaclity from "./component/RoomFaclity.tsx";
+import Photo from "./component/Photo.tsx";
+import Payment from "./component/Payment.tsx";
+import Review from "./component/Review.tsx";
+import Agreement from "./component/Agreement.tsx";
+import Contract2 from "./component/Contract2.tsx";
+import UnderReview from "./component/UnderReview.tsx";
+// import Head from "./Head.tsx";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,7 +28,7 @@ import Col from "react-bootstrap/Col";
 
 ReactDOM.render(
   <React.StrictMode>
-    <View3 />
+    <View1 />
   </React.StrictMode>,
   document.getElementById("root")
 );

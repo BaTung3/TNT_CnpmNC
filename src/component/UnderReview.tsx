@@ -1,7 +1,7 @@
 // import logo from "././logo.svg";
 // import "././App.css";
 // import { Button } from "bootstrap";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootstrap from "react-bootstrap";
@@ -11,8 +11,9 @@ import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import TimePicker from "react-time-picker";
+import Collapse from "react-bootstrap/Collapse";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { Checkbox } from "@mui/material";
 import {
   withScriptjs,
   withGoogleMap,
@@ -21,7 +22,6 @@ import {
 } from "react-google-maps";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-
 // import "react-phone-number-input/style.css";
 // import React, { useState } from "react";
 // import PhoneInput from "react-phone-number-input/react-native-input";
@@ -33,19 +33,11 @@ const stylepad = {
   "margin-left": "5px",
   padding: "0px",
 };
-// const MyMapComponent = withScriptjs(
-//   withGoogleMap((props) => (
-//     <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
-//       {props.isMarkerShown && (
-//         <Marker position={{ lat: -34.397, lng: 150.644 }} />
-//       )}
-//     </GoogleMap>
-//   ))
-// );
 
 // const [value, setValue] = useState();
 
-function View2() {
+function UnderReview() {
+  const [open, setOpen] = useState(false);
   return (
     <React.Fragment>
       <header>
@@ -69,7 +61,8 @@ function View2() {
             </Col>
             <Col>
               <div
-                style={{ display: "flex", justifyContent: "flex-end" }}
+                style={{ justifyContent: "flex-end" }}
+                // align="right"
                 className="c-column css-bv1y1v marginLeftAvatarTitle"
                 // style={{ "padding-right": "15px" }}
               >
@@ -112,7 +105,7 @@ function View2() {
                   </a>
                 </Button>
                 <Button variant="light">
-                  <a>Rooms</a>
+                  <a className="list-group-item">Rooms</a>
                 </Button>
                 <Button variant="light">
                   <a className="list-group-item">Rooms Facility</a>
@@ -140,356 +133,110 @@ function View2() {
           </Col>
 
           <Col xs={9}>
-            <Row>
-              <h1>
-                <b>Property Detail</b>
-              </h1>
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Details</th>
-                  <tr>
-                    <td>Main Currency</td>
-                    <td>Vietnam Dong (VND)</td>
-                  </tr>
-
-                  <tr>
-                    <td>Reception Area</td>
-                    <td>
-                      {["radio"].map((type) => (
-                        <div key={`inline-${type}`} className="mb-3">
-                          <Form.Check
-                            label="Available 24 Hours"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-1`}
-                          />
-                          <Form.Check
-                            default
-                            label="Not Available 24 Hours"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-2`}
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Check-In Time</td>
-                    <td>
-                      From*
-                      <TimePicker start="14:00" end="21:00" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Check out Time</td>
-                    <td>
-                      From*
-                      <TimePicker start="12:00" end="21:00" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Distance to City Center*</td>
-                    <td>
-                      <Form.Control type="text" placeholder="5" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Number of Floors</td>
-                    <td>
-                      <Form.Control type="text" placeholder="" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Additional Breakfast Charge (Exclude Room Rate)</td>
-                    <td>
-                      <Form.Control type="text" placeholder="5" />
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
-
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Cancellation Policy</th>
-                  <tr>
-                    <td>Cancellation Policy*</td>
-                    <td>
-                      <Dropdown>
-                        <Dropdown.Toggle id="dropdown-basic">
-                          cancel 1D prior arrival , 1N charge , no show 1N
-                          charge
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">
-                            cancel 1D prior arrival , 2N charge , no show 2N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">
-                            cancel 1D prior arrival , 3N charge , no show 3N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            cancel 1D prior arrival , 4N charge , no show 4N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            cancel 1D prior arrival , 5N charge , no show 5N
-                            charge
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
+            <Col>
+              <Row>
+                <tr>
+                  <h1>
+                    <b>
+                      We are currently verifying your property registration
+                      Information
+                    </b>
+                  </h1>
+                </tr>
+                <Form>
+                  <Table
+                    responsive
+                    className="c-flexbox c-collapse-header c-collapse-header--is-closed grayBackground css-rapf31"
+                  >
+                    <tr>
                       <tr>
-                        <Card style={{ width: "18rem" }}>
-                          <Card.Body>
-                            <Card.Text>
-                              Cancel 1D prior arrival 1N charge. No Show 1N
-                              charge.
-                            </Card.Text>
-                          </Card.Body>
-                        </Card>
+                        <p>
+                          Our Team will contact you via email
+                          (MeoVan@gmail.com)for any updates relate to your
+                          property registration process
+                        </p>
+                        <p>Warm Regard , Traveloka Accommodation Team</p>
                       </tr>
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
+                      <tr>
+                        <Button
+                          variant="outline-dark"
+                          size="lg"
+                          style={{ marginLeft: 16, backgroundColor: "orange" }}
+                        >
+                          <span>
+                            <span>Review Contract </span>
+                          </span>
+                        </Button>
+                      </tr>
+                    </tr>
+                  </Table>
+                  <table>
+                    <tr>
+                      <h4>Need help about your property registration ?</h4>
+                    </tr>
+                    <tr>
+                      <p>
+                        Your Registration ID: <b>674969469</b>
+                      </p>
+                    </tr>
 
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Style</th>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Adventure"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Backpacker"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Budget"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Conference"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Hip"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Honeymoon"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Luxury"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Shopping"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Spa"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Airport"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Boutique"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Business"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Family"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Golf"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Historic"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Long Stay"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Resort"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
-            </Row>
-          </Col>
-        </Row>
-        <Row align="right" display="inline">
-          <Col>
-            <Button variant="outline-dark" size="lg">
-              Save and go to previous section
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="outline-dark" size="lg">
-              Save and countnu to next section
-            </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div style={{ display: "flex", justifyContent: "flex-start" }}>
-              Need Help?
-            </div>
-          </Col>
-          <Col>
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              or Save and countinu later
-            </div>
+                    <tr>
+                      <td>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.45711 5.04289C4.06658 4.65237 3.43342 4.65237 3.04289 5.04289C2.65237 5.43342 2.65237 6.06658 3.04289 6.45711L4.45711 5.04289ZM20.9571 6.45711C21.3476 6.06658 21.3476 5.43342 20.9571 5.04289C20.5666 4.65237 19.9334 4.65237 19.5429 5.04289L20.9571 6.45711ZM20.2929 15.7071C20.6834 16.0976 21.3166 16.0976 21.7071 15.7071C22.0976 15.3166 22.0976 14.6834 21.7071 14.2929L20.2929 15.7071ZM2.29289 14.2929C1.90237 14.6834 1.90237 15.3166 2.29289 15.7071C2.68342 16.0976 3.31658 16.0976 3.70711 15.7071L2.29289 14.2929ZM5 6H19V4H5V6ZM20 7V17H22V7H20ZM19 18H5V20H19V18ZM4 17V7H2V17H4ZM3.04289 6.45711L7.29289 10.7071L8.70711 9.29289L4.45711 5.04289L3.04289 6.45711ZM7.29289 10.7071L9.52513 12.9393L10.9393 11.5251L8.70711 9.29289L7.29289 10.7071ZM14.4749 12.9393L16.7071 10.7071L15.2929 9.29289L13.0607 11.5251L14.4749 12.9393ZM16.7071 10.7071L20.9571 6.45711L19.5429 5.04289L15.2929 9.29289L16.7071 10.7071ZM15.2929 10.7071L20.2929 15.7071L21.7071 14.2929L16.7071 9.29289L15.2929 10.7071ZM3.70711 15.7071L8.70711 10.7071L7.29289 9.29289L2.29289 14.2929L3.70711 15.7071ZM5 18C4.44772 18 4 17.5523 4 17H2C2 18.6569 3.34315 20 5 20V18ZM20 17C20 17.5523 19.5523 18 19 18V20C20.6569 20 22 18.6569 22 17H20ZM9.52513 12.9393C10.892 14.3062 13.108 14.3062 14.4749 12.9393L13.0607 11.5251C12.4749 12.1109 11.5251 12.1109 10.9393 11.5251L9.52513 12.9393ZM19 6C19.5523 6 20 6.44772 20 7H22C22 5.34315 20.6569 4 19 4V6ZM5 4C3.34315 4 2 5.34315 2 7H4C4 6.44772 4.44772 6 5 6V4Z"
+                            fill="#0194f3"
+                          ></path>
+                        </svg>
+                      </td>
+                      <td>
+                        <tr>Email:</tr>
+                        <tr>
+                          <a href="mailto:hotelops@traveloka.com">
+                            <span className="c-text css-1d279ga">
+                              hotelops@traveloka.com
+                            </span>
+                          </a>
+                        </tr>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5.56974 3.04319C6.40547 2.88021 7.4164 3.04229 8.03369 3.7587C8.0376 3.76323 8.04143 3.76784 8.04517 3.77251L10.8849 7.31805C11.0118 7.46695 11.115 7.63794 11.1595 7.83391C11.2071 8.04316 11.1787 8.24166 11.1012 8.41672C10.6611 9.41126 9.27277 9.6049 8.71101 10.5299C8.6067 10.7016 8.57158 10.8728 8.64259 11.107C9.04217 12.4251 11.2944 14.7491 12.7155 15.1799C12.9498 15.2509 13.1209 15.2158 13.2926 15.1115C14.2178 14.5497 14.4112 13.1612 15.406 12.7213C15.5811 12.6439 15.7796 12.6156 15.9888 12.6631C16.1848 12.7077 16.3557 12.8109 16.5046 12.9378L20.0499 15.7773C20.0546 15.781 20.0592 15.7848 20.0637 15.7887C20.7801 16.406 20.9422 17.417 20.7793 18.2527C20.2553 20.9406 16.3088 21.0331 14.2025 20.7423C12.0374 20.4434 9.52604 19.3912 6.97874 16.8439C4.43091 14.2961 3.39638 11.8018 3.10672 9.64493C2.82424 7.54156 2.87865 3.56797 5.56974 3.04319Z"
+                            fill="#0194f3"
+                          ></path>
+                        </svg>
+                      </td>
+                      <td>
+                        <tr>Phone:</tr>
+                        <tr>
+                          <a href="tel:+61 290537142">
+                            <span className="c-text css-1d279ga">
+                              +61 290537142
+                            </span>
+                          </a>
+                        </tr>
+                      </td>
+                    </tr>
+                  </table>
+                </Form>
+              </Row>
+            </Col>
           </Col>
         </Row>
       </Container>
@@ -497,4 +244,4 @@ function View2() {
   );
 }
 
-export default View2;
+export default UnderReview;

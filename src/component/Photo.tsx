@@ -1,7 +1,7 @@
 // import logo from "././logo.svg";
 // import "././App.css";
 // import { Button } from "bootstrap";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootstrap from "react-bootstrap";
@@ -11,7 +11,7 @@ import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import TimePicker from "react-time-picker";
+import Collapse from "react-bootstrap/Collapse";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import {
   withScriptjs,
@@ -21,7 +21,6 @@ import {
 } from "react-google-maps";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-
 // import "react-phone-number-input/style.css";
 // import React, { useState } from "react";
 // import PhoneInput from "react-phone-number-input/react-native-input";
@@ -33,19 +32,11 @@ const stylepad = {
   "margin-left": "5px",
   padding: "0px",
 };
-// const MyMapComponent = withScriptjs(
-//   withGoogleMap((props) => (
-//     <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
-//       {props.isMarkerShown && (
-//         <Marker position={{ lat: -34.397, lng: 150.644 }} />
-//       )}
-//     </GoogleMap>
-//   ))
-// );
 
 // const [value, setValue] = useState();
 
-function View2() {
+function Photo() {
+  const [open, setOpen] = useState(false);
   return (
     <React.Fragment>
       <header>
@@ -69,7 +60,8 @@ function View2() {
             </Col>
             <Col>
               <div
-                style={{ display: "flex", justifyContent: "flex-end" }}
+                style={{ justifyContent: "flex-end" }}
+                // align="right"
                 className="c-column css-bv1y1v marginLeftAvatarTitle"
                 // style={{ "padding-right": "15px" }}
               >
@@ -112,7 +104,7 @@ function View2() {
                   </a>
                 </Button>
                 <Button variant="light">
-                  <a>Rooms</a>
+                  <a className="list-group-item">Rooms</a>
                 </Button>
                 <Button variant="light">
                   <a className="list-group-item">Rooms Facility</a>
@@ -139,357 +131,229 @@ function View2() {
             </div>
           </Col>
 
-          <Col xs={9}>
+          <Col xs={6}>
+            <Col>
+              <Row>
+                <h1>
+                  <b>Photos</b>
+                </h1>
+                <Form>
+                  <Table
+                    responsive
+                    className="c-flexbox c-collapse-header c-collapse-header--is-closed grayBackground css-rapf31"
+                  >
+                    <th>
+                      <td>
+                        <tr style={{ color: "blue" }}>
+                          <h4>Property</h4>
+                        </tr>
+                        <tr style={{ color: "red" }}>
+                          Please add photo for this section.
+                        </tr>
+                        <tr style={{ color: "red" }}>
+                          There's no photo with Lobby caption.
+                        </tr>
+                      </td>
+                      <td>
+                        <table>
+                          <tr>
+                            <td>0 photos added</td>
+                            <td style={{ color: "blue" }}>
+                              {" "}
+                              <Button variant="link">+ Add photo</Button>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </th>
+                    <tr>
+                      <td>
+                        <div className="c-block">
+                          <svg
+                            className="c-icon css-36kz25"
+                            viewBox="0 0 24 24"
+                            preserveAspectRatio="xMidYMid meet"
+                            style={{ height: 50, width: 50 }}
+                          >
+                            <g id="add-photo">
+                              <path d="M3 4V1h2v3h3v2H5v3H3V6H0V4h3zm3 6V7h3V4h7l1.83 2H21c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V10h3zm7 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-3.2-5c0 1.77 1.43 3.2 3.2 3.2s3.2-1.43 3.2-3.2-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2z"></path>
+                            </g>
+                          </svg>
+                        </div>
+
+                        <div
+                          className="c-block"
+                          style={{ marginTop: 16, marginBottom: 16 }}
+                        >
+                          <span className="c-text css-fs00l9">
+                            <span>Add photos</span>
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <div> </div>
+                      </td>
+                    </tr>
+                  </Table>
+
+                  <Table
+                    responsive
+                    className="c-flexbox c-collapse-header c-collapse-header--is-closed grayBackground css-rapf31"
+                  >
+                    <th>
+                      <td>
+                        <tr style={{ color: "blue" }}>
+                          <h4>S weet</h4>
+                        </tr>
+                        <tr style={{ color: "red" }}>
+                          Please add photo for this section.
+                        </tr>
+                        <tr style={{ color: "red" }}>
+                          There's no photo with Lobby caption.
+                        </tr>
+                      </td>
+                      <td>
+                        <table>
+                          <tr>
+                            <td>0 photos added</td>
+                            <td style={{ color: "blue" }}>
+                              {" "}
+                              <Button variant="link">+ Add photo</Button>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </th>
+                    <tr>
+                      <td>
+                        <div className="c-block">
+                          <svg
+                            className="c-icon css-36kz25"
+                            viewBox="0 0 24 24"
+                            preserveAspectRatio="xMidYMid meet"
+                            style={{ height: 50, width: 50 }}
+                          >
+                            <g id="add-photo">
+                              <path d="M3 4V1h2v3h3v2H5v3H3V6H0V4h3zm3 6V7h3V4h7l1.83 2H21c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V10h3zm7 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-3.2-5c0 1.77 1.43 3.2 3.2 3.2s3.2-1.43 3.2-3.2-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2z"></path>
+                            </g>
+                          </svg>
+                        </div>
+
+                        <div
+                          className="c-block"
+                          style={{ marginTop: 16, marginBottom: 16 }}
+                        >
+                          <span className="c-text css-fs00l9">
+                            <span>Add photos</span>
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <div> </div>
+                      </td>
+                    </tr>
+                  </Table>
+                </Form>
+              </Row>
+            </Col>
+
+            <Row align="right" display="inline">
+              <Col>
+                <Button variant="outline-dark" size="lg">
+                  Save and go to previous section
+                </Button>
+              </Col>
+              <Col>
+                <Button variant="outline-dark" size="lg">
+                  Save and countnu to next section
+                </Button>
+              </Col>
+            </Row>
             <Row>
-              <h1>
-                <b>Property Detail</b>
-              </h1>
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Details</th>
-                  <tr>
-                    <td>Main Currency</td>
-                    <td>Vietnam Dong (VND)</td>
-                  </tr>
-
-                  <tr>
-                    <td>Reception Area</td>
-                    <td>
-                      {["radio"].map((type) => (
-                        <div key={`inline-${type}`} className="mb-3">
-                          <Form.Check
-                            label="Available 24 Hours"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-1`}
-                          />
-                          <Form.Check
-                            default
-                            label="Not Available 24 Hours"
-                            name="group1"
-                            type={type}
-                            id={`inline-${type}-2`}
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Check-In Time</td>
-                    <td>
-                      From*
-                      <TimePicker start="14:00" end="21:00" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Check out Time</td>
-                    <td>
-                      From*
-                      <TimePicker start="12:00" end="21:00" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Distance to City Center*</td>
-                    <td>
-                      <Form.Control type="text" placeholder="5" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Number of Floors</td>
-                    <td>
-                      <Form.Control type="text" placeholder="" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Additional Breakfast Charge (Exclude Room Rate)</td>
-                    <td>
-                      <Form.Control type="text" placeholder="5" />
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
-
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Cancellation Policy</th>
-                  <tr>
-                    <td>Cancellation Policy*</td>
-                    <td>
-                      <Dropdown>
-                        <Dropdown.Toggle id="dropdown-basic">
-                          cancel 1D prior arrival , 1N charge , no show 1N
-                          charge
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                          <Dropdown.Item href="#/action-1">
-                            cancel 1D prior arrival , 2N charge , no show 2N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-2">
-                            cancel 1D prior arrival , 3N charge , no show 3N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            cancel 1D prior arrival , 4N charge , no show 4N
-                            charge
-                          </Dropdown.Item>
-                          <Dropdown.Item href="#/action-3">
-                            cancel 1D prior arrival , 5N charge , no show 5N
-                            charge
-                          </Dropdown.Item>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                      <tr>
-                        <Card style={{ width: "18rem" }}>
-                          <Card.Body>
-                            <Card.Text>
-                              Cancel 1D prior arrival 1N charge. No Show 1N
-                              charge.
-                            </Card.Text>
-                          </Card.Body>
-                        </Card>
-                      </tr>
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
-
-              <Form>
-                <Table borderless responsive>
-                  <th>Property Style</th>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Adventure"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Backpacker"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Budget"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Conference"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Hip"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Honeymoon"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Luxury"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Shopping"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Spa"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Airport"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Boutique"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Business"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Family"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Golf"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Historic"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Long Stay"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {["checkbox"].map((type) => (
-                        <div key={`default-${type}`} className="mb-3">
-                          <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label="Resort"
-                          />
-                        </div>
-                      ))}
-                    </td>
-                  </tr>
-                </Table>
-              </Form>
+              <Col>
+                <div style={{ alignItems: "flex-end" }}>Need Help?</div>
+              </Col>
+              <Col>
+                <div style={{ alignItems: "flex-end" }}>
+                  or Save and countinu later
+                </div>
+              </Col>
             </Row>
           </Col>
-        </Row>
-        <Row align="right" display="inline">
-          <Col>
-            <Button variant="outline-dark" size="lg">
-              Save and go to previous section
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="outline-dark" size="lg">
-              Save and countnu to next section
-            </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div style={{ display: "flex", justifyContent: "flex-start" }}>
-              Need Help?
-            </div>
-          </Col>
-          <Col>
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              or Save and countinu later
-            </div>
+
+          <Col xs={3}>
+            <Row>
+              <tr>
+                <span className="c-text css-54o0zs">
+                  <b>BASIC REQUIREMENT</b>
+                </span>
+              </tr>
+              <tr>
+                <ul>
+                  <li className="css-1rg1e3">
+                    <span>Min. size of 800 x 600 px</span>
+                  </li>
+                  <li className="css-1rg1e3">
+                    <span>Max. size of 4096 x 4096 px</span>
+                  </li>
+                  <li className="css-1rg1e3">
+                    <span>Min. file size of 10 KB</span>
+                  </li>
+                  <li className="css-1rg1e3">
+                    <span>Max. file size of 20 MB</span>
+                  </li>
+                  <li className="css-1rg1e3">
+                    <span>Resolution ratio should be between 0.5 and 2.0</span>
+                  </li>
+                </ul>
+              </tr>
+            </Row>
+            <Row> </Row>
+            <Row>
+              <div className="c-block" style={{ marginTop: 30 }}>
+                <p className="c-text css-bp7xzs">
+                  <span>
+                    <b>PROPERTY PHOTOS</b>
+                  </span>
+                </p>
+                <label
+                  className="c-label c-label--theme-tera css-cn0vwd"
+                  style={{ marginTop: 5 }}
+                >
+                  <span>Required Photos</span>
+                </label>
+                <ul>
+                  <li className="css-1rg1e3">
+                    <span>Lobby</span>
+                  </li>
+                </ul>
+              </div>
+            </Row>
+
+            <Row> </Row>
+            <Row>
+              <div className="c-block" style={{ marginTop: 30 }}>
+                <p className="c-text css-bp7xzs">
+                  <span>
+                    <b>ROOM PHOTOS</b>
+                  </span>
+                </p>
+                <label
+                  className="c-label c-label--theme-tera css-cn0vwd"
+                  style={{ marginTop: 5 }}
+                >
+                  <span>Required Photos</span>
+                </label>
+                <ul>
+                  <li className="css-1rg1e3">
+                    <span>Bedroom</span>
+                  </li>
+                  <li className="css-1rg1e3">
+                    <span>Bathroom</span>
+                  </li>
+                </ul>
+              </div>
+            </Row>
           </Col>
         </Row>
       </Container>
@@ -497,4 +361,4 @@ function View2() {
   );
 }
 
-export default View2;
+export default Photo;
