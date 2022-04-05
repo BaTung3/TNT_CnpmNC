@@ -98,34 +98,88 @@ function View3() {
               <h5>1.Property Information</h5>
               <div className="list-group">
                 <Button variant="light">
-                  <a href="../component/View1.tsx" className="list-group-item">
+                  {/* BaTung, Link day ne ->>>                 */}
+                  <a
+                    href={"../component/View1.tsx"}
+                    className="list-group-item"
+                  >
                     General Information
                   </a>
+                  {/* <Link to="../component/View1"> General Information </Link> */}
                 </Button>
                 <Button variant="light">
-                  <a href="../component/View2.tsx" className="list-group-item">
+                  <a
+                    href={"../component/View2.tsx"}
+                    className="list-group-item"
+                  >
                     Property detail
                   </a>
+                  {/* <Link to="../component/View2"> Property detail </Link> */}
                 </Button>
                 <Button variant="light">
-                  <a href="../component/View3.tsx" className="list-group-item">
+                  <a
+                    href={"../component/View3.tsx"}
+                    className="list-group-item"
+                  >
                     Property Facilities
+                  </a>
+                  {/* <Link to="../component/View3"> Property Facilities </Link> */}
+                </Button>
+                <Button variant="light">
+                  <a href="../component/Room.tsx" className="list-group-item">
+                    Rooms
                   </a>
                 </Button>
                 <Button variant="light">
-                  <a className="list-group-item">Rooms</a>
+                  <a
+                    href="../component/RoomFaclity.tsx"
+                    className="list-group-item"
+                  >
+                    Rooms Facility
+                  </a>
                 </Button>
                 <Button variant="light">
-                  <a className="list-group-item">Rooms Facility</a>
+                  <a href="../component/Photo.tsx" className="list-group-item">
+                    photos
+                  </a>
                 </Button>
                 <Button variant="light">
-                  <a className="list-group-item">photos</a>
+                  <a
+                    href="../component/Payment.tsx"
+                    className="list-group-item"
+                  >
+                    payment information
+                  </a>
                 </Button>
                 <Button variant="light">
-                  <a className="list-group-item">payment information</a>
+                  <a href="../component/Review.tsx" className="list-group-item">
+                    review property
+                  </a>
                 </Button>
                 <Button variant="light">
-                  <a className="list-group-item">review property</a>
+                  <a
+                    href="../component/Agreement.tsx"
+                    className="list-group-item"
+                  >
+                    Contact Agreement
+                  </a>
+                </Button>
+                <Button variant="light">
+                  <a
+                    href="../component/Contract2.tsx"
+                    className="list-group-item"
+                  >
+                    Review Contact
+                  </a>
+                </Button>
+                <Button variant="light">
+                  <a
+                    href="../component/UnderReview.tsx"
+                    className="list-group-item"
+                  >
+                    Under Review
+                  </a>
+                  {/* BaTung, Link cuoi ->>>                 */}
                 </Button>
                 <span> Mandatory Field progress</span>
               </div>
